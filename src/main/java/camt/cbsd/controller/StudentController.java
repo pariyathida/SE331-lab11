@@ -103,7 +103,7 @@ public class StudentController {
 
 
     @GetMapping("/student/images/{fileName:.+}")
-    public ResponseEntity<?> getStuentImage(@PathVariable("fileName") String filename) {
+    public ResponseEntity<?> getStudentImage(@PathVariable("fileName") String filename) {
         Path pathFile = Paths.get(imageServerDir + filename);
 
         try {

@@ -31,6 +31,8 @@ import java.util.Date;
 @Component
 public class DataLoader implements ApplicationRunner{
     StudentDao studentDao;
+    User user1,user2,user3;
+
     @Autowired
     public void setStudentDao(StudentDao studentDao) {
         this.studentDao = studentDao;
@@ -99,10 +101,18 @@ public class DataLoader implements ApplicationRunner{
 
         securitySetup();
 
+        student1.setUser(user1);
+        user1.setStudent(student1);
+        student2.setUser(user2);
+        user2.setStudent(student2);
+        student3.setUser(user3);
+        user3.setStudent(student3);
 
     }
+
+
     private void securitySetup() {
-        User user1 = User.builder()
+        user1 = User.builder()
                 .username("admin")
                 .password("admin")
                 .firstname("admin")
@@ -112,7 +122,7 @@ public class DataLoader implements ApplicationRunner{
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
-        User user2 = User.builder()
+        user2 = User.builder()
                 .username("user")
                 .password("user")
                 .firstname("user")
@@ -121,7 +131,7 @@ public class DataLoader implements ApplicationRunner{
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
-        User user3 = User.builder()
+        user3 = User.builder()
                 .username("disabled")
                 .password("disabled")
                 .firstname("user")
